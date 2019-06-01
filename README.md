@@ -5,6 +5,8 @@ TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019
 http://www.TheLittleEngineers.org/
 https://github.com/TheLittleEngineers
 
+This product is intended to allow a 27512 or 27C512 EPROM to be placed into a TMS2532 EPROM socket. The 27512 is divided into 16 banks of 4Kbytes via the four jumpers at the bottom of the socket.
+
 Released under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License, 01 June 2019 In Memory of my Father, Robert Embry Turner, 1945 - 2019. Rest In Peace. I LOVE YOU DAD!
 
 Archive name: "TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019"
