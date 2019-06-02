@@ -24,3 +24,6 @@ https://github.com/TheLittleEngineers/27C512E-TO-2532S-V1R1.20.APRIL.2019
 
 This design is available at OSHPark with the following urls:
 https://oshpark.com/shared_projects/JmUiHyi1 (EAGLE .brd)
+https://oshpark.com/shared_projects/4RvjjYdM (KiCAD .kicad_pcb)
+Note that the KiCAD version has been imported using the EAGLE import function of the Version 5.x of KiCAD. As such, it may be potentially problematic.
+
