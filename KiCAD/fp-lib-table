@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name 27C512E-TO-2532S)(type KiCad)(uri "$(KIPRJMOD)/27C512E-TO-2532S.pretty")(options "")(descr ""))
+)

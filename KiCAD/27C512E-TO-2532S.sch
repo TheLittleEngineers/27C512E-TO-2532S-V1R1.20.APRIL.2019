@@ -1,0 +1,488 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Bus Line
+	3300 1100 8500 1100
+Wire Wire Line
+	3900 1800 3400 1800
+Text Label 3400 1800 0    70   ~ 0
+D0
+Wire Wire Line
+	7900 1800 8400 1800
+Text Label 8400 1800 0    70   ~ 0
+D0
+Wire Wire Line
+	3900 1900 3400 1900
+Text Label 3400 1900 0    70   ~ 0
+D1
+Wire Wire Line
+	7900 1900 8400 1900
+Text Label 8400 1900 0    70   ~ 0
+D1
+Wire Wire Line
+	3900 2000 3400 2000
+Text Label 3400 2000 0    70   ~ 0
+D2
+Wire Wire Line
+	7900 2000 8400 2000
+Text Label 8400 2000 0    70   ~ 0
+D2
+Wire Wire Line
+	3900 2100 3400 2100
+Text Label 3400 2100 0    70   ~ 0
+D3
+Wire Wire Line
+	7900 2100 8400 2100
+Text Label 8400 2100 0    70   ~ 0
+D3
+Wire Wire Line
+	3900 2200 3400 2200
+Text Label 3400 2200 0    70   ~ 0
+D4
+Wire Wire Line
+	7900 2200 8400 2200
+Text Label 8400 2200 0    70   ~ 0
+D4
+Wire Wire Line
+	3900 2300 3400 2300
+Text Label 3400 2300 0    70   ~ 0
+D5
+Wire Wire Line
+	7900 2300 8400 2300
+Text Label 8400 2300 0    70   ~ 0
+D5
+Wire Wire Line
+	3900 2400 3400 2400
+Text Label 3400 2400 0    70   ~ 0
+D6
+Wire Wire Line
+	7900 2400 8400 2400
+Text Label 8400 2400 0    70   ~ 0
+D6
+Wire Wire Line
+	3900 2500 3400 2500
+Text Label 3400 2500 0    70   ~ 0
+D7
+Wire Wire Line
+	7900 2500 8400 2500
+Text Label 8400 2500 0    70   ~ 0
+D7
+Wire Wire Line
+	7100 4100 7100 3900
+Wire Wire Line
+	4600 3200 4600 4100
+Wire Wire Line
+	4600 4100 5300 4100
+Wire Wire Line
+	5600 5000 4600 5000
+Wire Wire Line
+	4600 5000 4600 4100
+Wire Wire Line
+	5600 5600 4600 5600
+Wire Wire Line
+	4600 5600 4600 5000
+Wire Wire Line
+	5600 6200 4600 6200
+Wire Wire Line
+	4600 6200 4600 5600
+Wire Wire Line
+	5600 6800 4600 6800
+Wire Wire Line
+	4600 6800 4600 6200
+Connection ~ 4600 4100
+Connection ~ 4600 5000
+Connection ~ 4600 5600
+Connection ~ 4600 6200
+Text Label 5700 4100 0    70   ~ 0
+GND
+Wire Wire Line
+	7100 1300 7100 1500
+Wire Wire Line
+	4600 1500 4600 1300
+Wire Wire Line
+	3900 2900 3100 2900
+Wire Wire Line
+	3100 2900 3100 1300
+Wire Wire Line
+	3100 1300 4600 1300
+Wire Wire Line
+	5600 4800 3100 4800
+Wire Wire Line
+	3100 4800 3100 2900
+Wire Wire Line
+	5600 5400 3100 5400
+Wire Wire Line
+	3100 5400 3100 4800
+Wire Wire Line
+	5600 6000 3100 6000
+Wire Wire Line
+	3100 6000 3100 5400
+Wire Wire Line
+	5600 6600 3100 6600
+Wire Wire Line
+	3100 6600 3100 6000
+Connection ~ 4600 1300
+Connection ~ 3100 2900
+Connection ~ 3100 4800
+Connection ~ 3100 5400
+Connection ~ 3100 6000
+Text Label 5700 1300 0    70   ~ 0
+VCC
+Text Label 3400 2900 0    70   ~ 0
+VCC
+Text Label 3400 1300 0    70   ~ 0
+VCC
+Wire Wire Line
+	5300 1800 5700 1800
+Text Label 5700 1800 0    70   ~ 0
+A0
+Wire Wire Line
+	6300 1800 5900 1800
+Text Label 5900 1800 0    70   ~ 0
+A0
+Wire Wire Line
+	5300 1900 5700 1900
+Text Label 5700 1900 0    70   ~ 0
+A1
+Wire Wire Line
+	6300 1900 5900 1900
+Text Label 5900 1900 0    70   ~ 0
+A1
+Wire Wire Line
+	5300 2000 5700 2000
+Text Label 5700 2000 0    70   ~ 0
+A2
+Wire Wire Line
+	6300 2000 5900 2000
+Text Label 5900 2000 0    70   ~ 0
+A2
+Wire Wire Line
+	5300 2100 5700 2100
+Text Label 5700 2100 0    70   ~ 0
+A3
+Wire Wire Line
+	6300 2100 5900 2100
+Text Label 5900 2100 0    70   ~ 0
+A3
+Wire Wire Line
+	5300 2200 5700 2200
+Text Label 5700 2200 0    70   ~ 0
+A4
+Wire Wire Line
+	6300 2200 5900 2200
+Text Label 5900 2200 0    70   ~ 0
+A4
+Wire Wire Line
+	5300 2300 5700 2300
+Text Label 5700 2300 0    70   ~ 0
+A5
+Wire Wire Line
+	6300 2300 5900 2300
+Text Label 5900 2300 0    70   ~ 0
+A5
+Wire Wire Line
+	5300 2400 5700 2400
+Text Label 5700 2400 0    70   ~ 0
+A6
+Wire Wire Line
+	6300 2400 5900 2400
+Text Label 5900 2400 0    70   ~ 0
+A6
+Wire Wire Line
+	5300 2500 5700 2500
+Text Label 5700 2500 0    70   ~ 0
+A7
+Wire Wire Line
+	6300 2500 5900 2500
+Text Label 5900 2500 0    70   ~ 0
+A7
+Wire Wire Line
+	5300 2600 5700 2600
+Text Label 5700 2600 0    70   ~ 0
+A8
+Wire Wire Line
+	6300 2600 5900 2600
+Text Label 5900 2600 0    70   ~ 0
+A8
+Wire Wire Line
+	5300 2700 5700 2700
+Text Label 5700 2700 0    70   ~ 0
+A9
+Wire Wire Line
+	6300 2700 5900 2700
+Text Label 5900 2700 0    70   ~ 0
+A9
+Wire Wire Line
+	5300 2800 5700 2800
+Text Label 5700 2800 0    70   ~ 0
+A10
+Wire Wire Line
+	6300 2800 5900 2800
+Text Label 5900 2800 0    70   ~ 0
+A10
+Wire Wire Line
+	5300 2900 5700 2900
+Text Label 5700 2900 0    70   ~ 0
+A11
+Wire Wire Line
+	6300 2900 5900 2900
+Text Label 5900 2900 0    70   ~ 0
+A11
+Wire Wire Line
+	6300 3000 5900 3000
+Text Label 5900 3000 0    70   ~ 0
+A12
+Wire Wire Line
+	5600 6700 5100 6700
+Wire Wire Line
+	5100 6700 5100 3100
+Wire Wire Line
+	5100 3100 5200 3000
+Wire Wire Line
+	5200 3000 5700 3000
+Text Label 5700 3000 0    70   ~ 0
+A12
+Wire Wire Line
+	6300 3100 5900 3100
+Text Label 5900 3100 0    70   ~ 0
+A13
+Wire Wire Line
+	5600 6100 5200 6100
+Wire Wire Line
+	5200 6100 5200 3100
+Wire Wire Line
+	5200 3100 5700 3100
+Text Label 5700 3100 0    70   ~ 0
+A13
+Wire Wire Line
+	6300 3200 5900 3200
+Text Label 5900 3200 0    70   ~ 0
+A14
+Wire Wire Line
+	5600 5500 5300 5500
+Wire Wire Line
+	5300 5500 5300 3200
+Wire Wire Line
+	5300 3200 5700 3200
+Text Label 5700 3200 0    70   ~ 0
+A14
+Wire Wire Line
+	6300 3300 5900 3300
+Text Label 5900 3300 0    70   ~ 0
+A15
+Wire Wire Line
+	5600 4900 5400 4900
+Wire Wire Line
+	5400 4900 5400 3300
+Wire Wire Line
+	5400 3300 5700 3300
+Text Label 5700 3300 0    70   ~ 0
+A15
+Wire Wire Line
+	3900 2700 3300 2700
+Wire Wire Line
+	3300 2700 3300 4300
+Wire Wire Line
+	3300 4300 8500 4300
+Wire Wire Line
+	8500 4300 8500 3300
+Wire Wire Line
+	8500 3300 8500 3100
+Wire Wire Line
+	8500 3100 7900 3100
+Wire Wire Line
+	7900 3300 8500 3300
+Connection ~ 8500 3300
+Text Label 5700 4300 0    70   ~ 0
+~CE
+Text Label 3400 2700 0    70   ~ 0
+~CE
+Text Label 8300 3100 0    70   ~ 0
+~CE
+Text Label 8300 3300 0    70   ~ 0
+~CE
+Entry Wire Line
+	3300 1700 3400 1800
+Entry Wire Line
+	3300 1800 3400 1900
+Entry Wire Line
+	3300 1900 3400 2000
+Entry Wire Line
+	3300 2000 3400 2100
+Entry Wire Line
+	3300 2100 3400 2200
+Entry Wire Line
+	3300 2200 3400 2300
+Entry Wire Line
+	3300 2300 3400 2400
+Entry Wire Line
+	3300 2400 3400 2500
+Entry Wire Line
+	8400 1800 8500 1900
+Entry Wire Line
+	8400 1900 8500 2000
+Entry Wire Line
+	8400 2000 8500 2100
+Entry Wire Line
+	8400 2100 8500 2200
+Entry Wire Line
+	8400 2200 8500 2300
+Entry Wire Line
+	8400 2300 8500 2400
+Entry Wire Line
+	8400 2400 8500 2500
+Entry Wire Line
+	8400 2500 8500 2400
+Entry Wire Line
+	5700 1800 5800 1900
+Entry Wire Line
+	5800 1900 5900 1800
+Entry Wire Line
+	5700 1900 5800 2000
+Entry Wire Line
+	5800 1800 5900 1900
+Entry Wire Line
+	5700 2000 5800 2100
+Entry Wire Line
+	5800 1900 5900 2000
+Entry Wire Line
+	5700 2100 5800 2200
+Entry Wire Line
+	5800 2000 5900 2100
+Entry Wire Line
+	5700 2200 5800 2300
+Entry Wire Line
+	5800 2100 5900 2200
+Entry Wire Line
+	5700 2300 5800 2400
+Entry Wire Line
+	5800 2200 5900 2300
+Entry Wire Line
+	5700 2400 5800 2500
+Entry Wire Line
+	5800 2300 5900 2400
+Entry Wire Line
+	5700 2500 5800 2600
+Entry Wire Line
+	5800 2400 5900 2500
+Entry Wire Line
+	5700 2600 5800 2700
+Entry Wire Line
+	5800 2500 5900 2600
+Entry Wire Line
+	5700 2700 5800 2800
+Entry Wire Line
+	5800 2600 5900 2700
+Entry Wire Line
+	5700 2800 5800 2900
+Entry Wire Line
+	5800 2700 5900 2800
+Entry Wire Line
+	5700 2900 5800 3000
+Entry Wire Line
+	5800 2800 5900 2900
+Entry Wire Line
+	5800 2900 5900 3000
+Entry Wire Line
+	5700 3000 5800 3100
+Entry Wire Line
+	5800 3000 5900 3100
+Entry Wire Line
+	5700 3100 5800 3200
+Entry Wire Line
+	5800 3100 5900 3200
+Entry Wire Line
+	5700 3200 5800 3300
+Entry Wire Line
+	5800 3200 5900 3300
+Entry Wire Line
+	5700 3300 5800 3200
+$Comp
+L 27C512E-TO-2532S-eagle-import:TMS2532-NO IC1
+U 1 0 22F7723E
+P 4600 2300
+F 0 "IC1" H 4100 2925 100 0000 L BNN
+F 1 "TMS2532-NO" H 4100 1480 100 0000 L BNN
+F 2 "27C512E-TO-2532S:DIL24-6-NO-OUTLINE" H 4600 2300 50  0001 C CNN
+F 3 "" H 4600 2300 50  0001 C CNN
+	1    4600 2300
+	-1   0    0    -1  
+$EndComp
+$Comp
+L 27C512E-TO-2532S-eagle-import:27C512D-NO IC2
+U 1 0 BC34DC86
+P 7100 2700
+F 0 "IC2" H 6500 3725 100 0000 L BNN
+F 1 "27C512D-NO" H 6500 1580 100 0000 L BNN
+F 2 "27C512E-TO-2532S:DIL28-6-NO-OUTLINE" H 7100 2700 50  0001 C CNN
+F 3 "" H 7100 2700 50  0001 C CNN
+	1    7100 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L 27C512E-TO-2532S-eagle-import:1X03-STAGGERED-S A1
+U 1 0 EA64C37F
+P 5900 6700
+F 0 "A1" H 5690 6920 100 0000 L BNN
+F 1 "1X03-STAGGERED-S" H 5690 6380 100 0000 L BNN
+F 2 "27C512E-TO-2532S:1X03-STAGGERED" H 5900 6700 50  0001 C CNN
+F 3 "" H 5900 6700 50  0001 C CNN
+	1    5900 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L 27C512E-TO-2532S-eagle-import:1X03-STAGGERED-S A2
+U 1 0 08E3D46F
+P 5900 6100
+F 0 "A2" H 5690 6320 100 0000 L BNN
+F 1 "1X03-STAGGERED-S" H 5690 5780 100 0000 L BNN
+F 2 "27C512E-TO-2532S:1X03-STAGGERED" H 5900 6100 50  0001 C CNN
+F 3 "" H 5900 6100 50  0001 C CNN
+	1    5900 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L 27C512E-TO-2532S-eagle-import:1X03-STAGGERED-S A3
+U 1 0 4CB7308E
+P 5900 5500
+F 0 "A3" H 5690 5720 100 0000 L BNN
+F 1 "1X03-STAGGERED-S" H 5690 5180 100 0000 L BNN
+F 2 "27C512E-TO-2532S:1X03-STAGGERED" H 5900 5500 50  0001 C CNN
+F 3 "" H 5900 5500 50  0001 C CNN
+	1    5900 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L 27C512E-TO-2532S-eagle-import:1X03-STAGGERED-S A4
+U 1 0 D3A6F584
+P 5900 4900
+F 0 "A4" H 5690 5120 100 0000 L BNN
+F 1 "1X03-STAGGERED-S" H 5690 4580 100 0000 L BNN
+F 2 "27C512E-TO-2532S:1X03-STAGGERED" H 5900 4900 50  0001 C CNN
+F 3 "" H 5900 4900 50  0001 C CNN
+	1    5900 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4100 7100 4100
+Wire Wire Line
+	4600 1300 7100 1300
+Wire Bus Line
+	8500 1100 8500 2500
+Wire Bus Line
+	3300 1100 3300 2500
+Wire Bus Line
+	5800 1800 5800 3300
+$EndSCHEMATC

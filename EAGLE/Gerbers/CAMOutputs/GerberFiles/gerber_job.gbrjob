@@ -1,0 +1,20 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2019-06-02T08:09:06Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.4.0"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019"
+        },
+        "Owner": "Robert \"The R.A.T.\" Allen Turner <TheLittleEngineers@outlook.com>"
+    }
+}

@@ -1,0 +1,6 @@
+Partlist exported from C:/Users/TLE/OneDrive/27C512E-TO-2532S-V1R0-master/TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019/EAGLE/Gerbers-Outline/TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019-Outline.sch at 6/2/2019 3:09 AM
+
+Qty Value Device           Package            Parts          Description      
+4         1X03-STAGGERED-S 1X03-STAGGERED     A1, A2, A3, A4 3-Pin SIP Header 
+1         27C512D-NO       DIL28-6-NO-OUTLINE IC2            27C512D          
+1         TMS2532-NO       DIL24-6-NO-OUTLINE IC1            TMS2532          
