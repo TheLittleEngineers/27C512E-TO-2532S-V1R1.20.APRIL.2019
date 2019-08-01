@@ -7,13 +7,14 @@
 // Many thanks to ConnectEDA for allowing us to use their pcb_to_dsn ulp-file.
 //
 //
-// Last change November 23th 2008
+// Last change February 22th 2006
 //
 //=====================================
 
 int preprotect = 0;
 int string_quote = 1;
 real polyline_endpoint_tolerance = 0.001; // The tolerance for regarding 2 line endpoints as equal.
+real outline_endpoint_tolerance = 2.0; // The tolerance for regarding 2 line endpoints of the outline as equal.
 
 enum  {false,true};
 int Units;
@@ -283,22 +284,6 @@ real Unit2Value(real val, string s)
 	return Value;
 }
 
-// Returns the new x coordinate of the point (p_x, p_y) after rotating around the zero point by p_degree degrees.
-real rotate_x( real p_x, real p_y, real p_degree)
-{
-    real angle = p_degree *  PI / 180.0;
-    real rotated_x = p_x * cos(angle) - p_y * sin(angle);
-    return rotated_x;
-}
-
-// Returns the new x coordinate of the point (p_x, p_y) after rotating around the zero point by p_degree degrees.
-real rotate_y( real p_x, real p_y, real p_degree)
-{
-    real angle = p_degree *  PI / 180.0;
-    real rotated_y = p_x * sin(angle) + p_y * cos(angle);
-    return rotated_y;
-}
-
 
 //=================================================================
 
@@ -420,10 +405,12 @@ string NewPadTypeName(int ShapeType)
 	{
 		Name = "Oblong";
 	}
+/*  	else
 	if (ShapeType == PAD_SHAPE_OFFSET)
 	{
 		Name = "Offset";
 	}
+*/
 	for (i = 0; i < NumberPadTypes; i++)
 	{		
 		if (PadTypeshape[i] == ShapeType)
@@ -904,7 +891,7 @@ void Padstacks()
 //--------------
 {
 	int i, j, l;
-	real a, b;
+	real Side, a, b;
 	string tmp;
 	
 	printf("    (padstack ");
@@ -1043,7 +1030,7 @@ void Padstacks()
 			}
 		}
 		else
-		if (PadTypeshape[i]==PAD_SHAPE_LONG || PadTypeshape[i]==PAD_SHAPE_OFFSET)
+		if (PadTypeshape[i]==PAD_SHAPE_LONG)
 		{
 			printf("\n      (shape ");
 			printf("(path ");
@@ -1059,89 +1046,77 @@ void Padstacks()
 		
 			l = PadTypeX[i];
 			if (l < PadTypeY[i])
-				l = PadTypeY[i];       
-
-                  real Side = (0.02 * PadTypeE[i] - 1) * l; 
-
-                  write_Db2Unit(l);
-                  printf(" ");
-                  real x1, x2, y1, y2;
-                  if (PadTypeshape[i]==PAD_SHAPE_LONG)
-                  {
-                        real half_widht = Side / 2;
-				if (PadTypeAngle[i] == 90 || PadTypeAngle[i] == 270)
-				{
-                        	   x1 = 0;
-                        	   y1 = -half_widht;
-                        	   x2 = 0;
-                        	   y2 = half_widht;
-				}
-				else if (PadTypeAngle[i] == 0 || PadTypeAngle[i] == 180)
-				{
-                        	   x1 = -half_widht;
-                        	   y1 = 0;
-                        	   x2 = half_widht;
-                        	   y2 = 0;
-				}
-                                else
-				{
-                        	   x2 = rotate_x (half_widht, 0, PadTypeAngle[i]);
-                        	   y2 = rotate_y (half_widht, 0, PadTypeAngle[i]);
-                       	           x1 = -x2;
-                        	   y1 = y2;
-				}
-                  }
-                  else
-                  {
-                     if (PadTypeAngle[i] == 0)
-			   {
-                        	x1 = 0;
-                        	y1 = 0;
-                        	x2 = Side;
-                        	y2 = 0;
-		         }
-                     else if (PadTypeAngle[i] == 180)
-			   {
-                        	x1 = -Side;
-                        	y1 = 0;
-                        	x2 = 0;
-                        	y2 = 0;
-		         }
-                     if (PadTypeAngle[i] == 90)
-			   {
-                        	x1 = 0;
-                        	y1 = 0;
-                        	x2 = 0;
-                        	y2 = Side;
-		         }
-                     else if (PadTypeAngle[i] == 270)
-			   {
-                        	x1 = 0;
-                        	y1 = -Side;
-                        	x2 = 0;
-                        	y2 = 0;
-		         }
-                     else
-                     {
-                                x1 = 0;
-                        	y1 = 0;
-                        	x2 = rotate_x (Side, 0, PadTypeAngle[i]);
-                        	y2 = rotate_y (Side, 0, PadTypeAngle[i]);
-                     }
-                  }
-                  write_Db2Unit(x1);
-                  printf(" ");
-                  write_Db2Unit(y1);
-                  printf(" ");
-                  write_Db2Unit(x2);
-                  printf(" ");
-                  write_Db2Unit(y2);
-                  printf("))");
-                  
-                  
-
+				l = PadTypeY[i];
+			if (PadTypeAngle[i] == 90 || PadTypeAngle[i] == 270)
+			{
+				write_Db2Unit(l);
+				printf(" ");
+				real tmp = l;        
+				Side = tmp/100 * PadTypeE[i];
+				printf("0 ");
+				write_Db2Unit(Side/2);
+				printf(" 0 ");
+				write_Db2Unit(-Side/2);
+				printf("))");
+			}
+			else
+			{
+				write_Db2Unit(l);
+				printf(" ");
+				real tmp = l;        
+				Side = tmp/100 * PadTypeE[i];
+				write_Db2Unit(-Side/2);
+				printf(" 0 ");
+				write_Db2Unit(Side/2);
+				printf(" 0))");
+			}
 		}
 		else
+/*	elongation ist nur für die Pad-Formen PAD_SHAPE_LONG und PAD_SHAPE_OFFSET gültig und bestimmt um wieviel Prozent die lange Seite eines solchen Pads länger ist als seine schmale Seite. Für alle anderen Pad-Formen liefert dieses Member den Wert 0. 
+	
+		if (PadTypeshape[i]==PAD_SHAPE_OFFSET)
+		{
+			printf("\n      (shape ");
+			printf("(path ");
+			if (PadTypeLayer[i]==0)
+			{
+				printf("signal");
+			}
+			else
+			{
+				printf(LayerFromId(PadTypeLayer[i]));
+			}
+			printf(" ");
+		
+			l = PadTypeX[i];
+			if (l < PadTypeY[i])
+				l = PadTypeY[i];
+			if (PadTypeAngle[i] == 90 || PadTypeAngle[i] == 270)
+			{
+				write_Db2Unit(l);
+				printf(" ");
+				real tmp = l;        
+				Side = tmp/100 * PadTypeE[i];
+				printf("0 ");
+				write_Db2Unit(Side/2);
+				printf(" 0 ");
+				write_Db2Unit(-Side/2);
+				printf("))");
+			}
+			else
+			{
+				write_Db2Unit(l);
+				printf(" ");
+				real tmp = l;        
+				Side = tmp/100 * PadTypeE[i];
+				write_Db2Unit(-Side/2);
+				printf(" 0 ");
+				write_Db2Unit(Side/2);
+				printf(" 0))");
+			}
+		}
+		else
+		*/
 		if (PadTypeshape[i]==PAD_SHAPE_SQUARE)
 		{
 			if (PadTypeLayer[i]==0)
@@ -1422,7 +1397,7 @@ int collectOutlineLines(UL_BOARD Board)
 }
 
 int polygon_corner_count;                               // The numer of corners of the polygon.
-int polygon_part_corners_x[], polygon_part_corners_y[]; // A connected part of a keepout described as a polygon.
+int polygon_part_corners_x[], polygon_part_corners_y[]; // A connected part of the outline described as a polygon.
 int polygon_part_corner_count;                          // The number of corners of the connected part.
 
 // Combines all connected unhandeled lines of a list of lines to a polygon.
@@ -1516,22 +1491,32 @@ int combineLines(real p_end_point_tolerance)
 void MakeBoundary	() 
 //-------------------------
 {
-      board(Board)
-      {
+	board(Board)
+	{
 	    polygon_corner_count = collectOutlineLines(Board);
       }
       for (int i = 0; i < polygon_corner_count; ++i)
       {
+         line_handeled[i] = false;
+      }
+      for (;;)
+      {
+  	     int more_outline_parts = combineLines(outline_endpoint_tolerance);
+           if (!more_outline_parts)
+           {
+               break;
+           }
 	     printf("    (boundary ");
 	     printf("(path ");
 	     printf("signal 0 ");
-             write_Db2Unit(boundary_lines_a_x[i]);
-	     printf(" ");
-             write_Db2Unit(boundary_lines_a_y[i]);
-	     printf(" ");
-             write_Db2Unit(boundary_lines_b_x[i]);
-	     printf(" ");
-             write_Db2Unit(boundary_lines_b_y[i]);
+
+	     for (i = 0; i< polygon_part_corner_count; ++i)
+	     {
+	         write_Db2Unit(polygon_part_corners_x[i]);
+	         printf(" ");
+	         write_Db2Unit(polygon_part_corners_y[i]);
+	         printf(" ");
+	     }
      	     printf("))\n");
       }
 }
@@ -1669,9 +1654,11 @@ void SMDPad(UL_SMD Pad)
 }
 
 
-void make_component_keepout(int p_layer, string p_layer_name)
+// Creates an outline of a component, which is made  by lines.
+
+void make_component_keepout(int p_layer, string p_layer_name, int p_width)
 {
-      if (polygon_corner_count <= 0 || !IsKeepoutLayer(p_layer))
+      if (polygon_corner_count <= 0)
 	{
 		return;
 	}
@@ -1681,20 +1668,29 @@ void make_component_keepout(int p_layer, string p_layer_name)
       }
       for (;;)
       {
-  	     	int more_parts = combineLines(polyline_endpoint_tolerance);
-           	if (!more_parts)
+  	     	int more_outline_parts = combineLines(polyline_endpoint_tolerance);
+           	if (!more_outline_parts)
             {
      	          break;
      	      }
+
+ 		if (IsKeepoutLayer(p_layer))
+		{
+                  p_width = 0;
 			printf("      (%s", KeepoutType(p_layer));
 			p_layer_name = "signal";
 			if (p_layer == 39 || p_layer == 41)
 				p_layer_name = TopLayer;
 			if (p_layer == 40 || p_layer == 42)
 				p_layer_name = BotLayer;
-	   printf("(path ");
+		}
+		else 
+			printf("    (outline ");
+	     printf("(path ");
            write_Str(p_layer_name); 
-           printf(" 0 ");
+           printf(" ");
+           write_Db2Unit(p_width);
+           printf(" ");
            
 	     for (i = 0; i< polygon_part_corner_count; ++i)
 	     {
@@ -1736,7 +1732,7 @@ void FPOutline(UL_PACKAGE FP, UL_LAYER Layer)
 			}
 		}
 		
-            make_component_keepout(Layer.number, LayerName);
+            make_component_keepout(Layer.number, LayerName, width);
 
 		FP.circles(Circle)
 		{
@@ -1786,23 +1782,10 @@ void FPOutline(UL_PACKAGE FP, UL_LAYER Layer)
 			{
 				Polygon.wires(W)
 				{
-              	 	             polygon_corner_count = process_next_wire (W, polygon_corner_count);
-             		             width = W.width;
+              	 	     polygon_corner_count = process_next_wire (W, polygon_corner_count);
+             		     width = W.width;
 				}
-      				for (int i = 0; i < polygon_corner_count; ++i)
-      				{
-	     				printf("    (outline ");
-	     				printf("(path ");
-	     				printf("signal 0 ");
-             				write_Db2Unit(boundary_lines_a_x[i]);
-	     				printf(" ");
-             				write_Db2Unit(boundary_lines_a_y[i]);
-	     				printf(" ");
-             				write_Db2Unit(boundary_lines_b_x[i]);
-	     				printf(" ");
-             				write_Db2Unit(boundary_lines_b_y[i]);
-     	     				printf("))\n");
-      				}
+                        make_component_keepout(Layer.number, LayerName, width);
 			}
 		}
 	}
@@ -1971,13 +1954,13 @@ void Header()
 		else
 		if (Units == GRID_UNIT_MIL)
 		{
-		  printf("mil 254)");
+		  printf("mil 10000)");
 		  printf("\n  (unit mil)");
 		}
 		else
 		if (Units == GRID_UNIT_INCH)
 		{
-		  printf("inch 254000)");
+		  printf("inch 10000)");
 		  printf("\n  (unit inch)");
 		}
 		else
@@ -2085,52 +2068,6 @@ void Network()
   	printf("  )\n");
 }
 
-int arc_approx_corners_x[], arc_approx_corners_y[];
-
-int approximate_wire_arc(UL_ARC arc)
-//---------------------------------
-{
-      real max_piece_length = 10000;
-
-      real arc_length = distance(arc.x1, arc.y1, arc.x2, arc.y2);
-      int approx_count = arc_length / max_piece_length;
-      approx_count = max (approx_count, 1);
-      real delta_angle = arc.angle2 - arc.angle1;
-      if (delta_angle < 0)
-      {
-         delta_angle += 360;
-      }
-      real angle_inc = delta_angle / approx_count;
-      arc_approx_corners_x[0] = arc.x1;
-      arc_approx_corners_y[0] = arc.y1;
-      int corner_no = 1;  
-      for (int i = 1; i <= approx_count; ++i)
-      {
-         int next_x; 
-         int next_y;
-         if (i == approx_count)
-         {
-            next_x = arc.x2;
-            next_y = arc.y2;
-         }
-         else
-         {
-            real curr_angle = arc.angle1 + i * angle_inc;
-            if (curr_angle > 360)
-            {
-               curr_angle -= 360;
-            }
-            real radian_angle = curr_angle *  PI / 180.0;
-            next_x = arc.xc + arc.radius * cos(radian_angle);
-            next_y = arc.yc + arc.radius * sin(radian_angle);
-         }
-         arc_approx_corners_x[corner_no]= next_x;
-	   arc_approx_corners_y[corner_no]= next_y;
-         ++corner_no;
-      }
-     return corner_no;
-}
-
 
 void Wiring()
 //-----------
@@ -2141,86 +2078,78 @@ void Wiring()
 	printf("  (wiring\n");
 	board(Board)
 	{		         
-    		Board.signals(Net)
+    Board.signals(Net)
 		{
-      		Net.wires(Wire)
-		  	{
-        			if ((Wire.layer >= 1) && (Wire.layer <= 16))
-        			{
-          				if (Wire.arc)
-          				{
-                                    int corner_count = approximate_wire_arc(Wire.arc);
-                                    printf("    (wire\n");
-            				printf("      (path "); 
-            				printf("%s ", LayerFromId(Wire.layer));
-						write_Db2Unit(Wire.arc.width);
-                                    for (int i = 0; i < corner_count; ++i)
-						{
-							printf(" ");
-							write_Db2Unit(arc_approx_corners_x[i]);
-  							printf(" ");
-							write_Db2Unit(arc_approx_corners_y[i]);
-						}
-          				}
-          				else
-          				{
-            				printf("    (wire\n");
-            				printf("      (path "); 
-            				printf("%s ", LayerFromId(Wire.layer));          
-            				LineDesc(Wire);
-          				}
-          				printf(") \n");
-          				printf("      (net ");
-					write_qStr(Net.name);
-          				if (preprotect)
-            				printf(") (type protect)\n");
-          				else
-            				printf(")\n"); 
-          				printf("    )\n"); 
-        			}
-		  	}
+      Net.wires(Wire)
+		  {
+        if ((Wire.layer >= 1) && (Wire.layer <= 16))
+        {
+          if (Wire.arc)
+          {
+            printf("    (wire\n");
+            printf("      (path "); 
+            printf("%s ", LayerFromId(Wire.layer));
+            ArcDesc(Wire.arc);
+          }
+          else
+          {
+            printf("    (wire\n");
+            printf("      (path "); 
+            printf("%s ", LayerFromId(Wire.layer));          
+            LineDesc(Wire);
+          }
+          printf(") \n");
+          printf("      (net ");
+			write_qStr(Net.name);
+          if (preprotect)
+            printf(") (type protect)\n");
+          else
+            printf(")\n"); 
+          printf("    )\n"); 
+        }
+		  }
 
-      		Net.polygons(Poly)
-      		{
-        			if ((Poly.layer >= 1) && (Poly.layer <= 16))
-        			{
-          				printf("    (wire\n");
-          				printf("      (poly ");
-          				printf("%s ", LayerFromId(Poly.layer));          
-          				PolygonDesc(Poly);
+      Net.polygons(Poly)
+      {
+        if ((Poly.layer >= 1) && (Poly.layer <= 16))
+        {
+          printf("    (wire\n");
+          printf("      (poly ");
+          printf("%s ", LayerFromId(Poly.layer));          
+          PolygonDesc(Poly);
 
-          				printf(") \n");
-          				printf("      (net ");
-					write_qStr(Net.name);
-          				if (preprotect)
-            				printf(") (type protect)\n");
-          				else
-            				printf(")\n"); 
-          				printf("    )\n"); 
-        			}
-      		}
+          printf(") \n");
+          printf("      (net ");
+			write_qStr(Net.name);
+          if (preprotect)
+            printf(") (type protect)\n");
+          else
+            printf(")\n"); 
+          printf("    )\n"); 
+        }
+      }
           
-      		Net.vias(Via)
-			{
-				printf("    (via\n      ");
+      Net.vias(Via)
+		  {
+			printf("    (via\n      ");
         
-				write_qStr(FindViaType(Via.shape[LAYER_TOP], Via.diameter[LAYER_TOP], 0, Via.drill, 0, 0, 0, Via.start, Via.end));
-				printf(" ");
+			write_qStr(FindViaType(Via.shape[LAYER_TOP], Via.diameter[LAYER_TOP], 0, Via.drill, 0, 0, 0, Via.start, Via.end));
+			printf(" ");
 
-				write_Db2Unit(Via.x);
-				printf(" ");
-				write_Db2Unit(Via.y);         
-				printf("\n      (net ");
-				write_qStr(Net.name);
-				if (preprotect)
-					printf(") (type protect)\n");
-				else
-					printf(")\n"); 
-					printf("    )\n"); 
-			}	    
+			write_Db2Unit(Via.x);
+			printf(" ");
+			write_Db2Unit(Via.y);         
+			printf("\n      (net ");
+			write_qStr(Net.name);
+			if (preprotect)
+				printf(") (type protect)\n");
+			else
+				printf(")\n"); 
+				printf("    )\n"); 
+		  }	    
 		}
 	}
-	printf("  )\n");
+  printf("  )\n");
 }
 
 
@@ -2338,8 +2267,8 @@ void make_keepout_shape(int p_layer, string p_layer_name, int p_width)
       }
       for (;;)
       {
-  	     	int more_parts = combineLines(polyline_endpoint_tolerance);
-           	if (!more_parts)
+  	     	int more_outline_parts = combineLines(polyline_endpoint_tolerance);
+           	if (!more_outline_parts)
             {
      	          break;
      	      }
@@ -2585,8 +2514,7 @@ board(Board)
 		}
 	}
 	clearance_wire_pad = clearance_wire_smd = clearance_wire_via = clearance_pad_pad = clearance_pad_via
-		= clearance_via_via = clearance_smd_pad = clearance_smd_via 
-            = clearance_smd_smd = -1;
+		= clearance_via_via = clearance_smd_pad = clearance_smd_via = clearance_smd_smd = -1;
 
 	Units = Board.grid.unit;
 
