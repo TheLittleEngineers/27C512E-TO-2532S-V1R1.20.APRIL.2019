@@ -1,16 +1,19 @@
 # 27C512E-TO-2532S-V1R1.20.APRIL.2019
+<p align="center">
 TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019
 27C512 E.P.R.O.M. TO TMS2532 SOCKET CONVERTER.
 (C) 20 April 2019 and 01 June 2019 by: Robert Allen Turner
 http://www.TheLittleEngineers.org/
 https://github.com/TheLittleEngineers
-
+</p>
+<p align="justify">
 This product is intended to allow a 27512 or 27C512 EPROM to be placed into a TMS2532 EPROM socket. The 27512 is divided into 16 banks of 4Kbytes via the four jumpers at the bottom of the socket.
 
 Released under a Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) License, 01 June 2019 In Memory of my Father, Robert Embry Turner, 1945 - 2019. Rest In Peace. I LOVE YOU DAD!
-
+</p>
+<p align="center">
 Archive name: "TheLittleEngineers.org-27C512E-TO-2532S-V1R1.20.APRIL.2019"
-
+</p>
 This is an update to the "TheLittleEngineers.org-27C512E-TO-2532S-V1R0.20.APRIL.2019" repository which resides at this url:
 https://github.com/TheLittleEngineers/27C512E-TO-2532S-V1R0
 This update was made due to the fact that I was not very pleased with the initial Printed Circuit Boards that resulted from the original design. Although functional, the production of the Printed Circuit Boards was inconsistent between different manufacturers. This was due to a problem in the dimension layer of the original design and so I have created this new design to eliminate the inconsistencies.
@@ -50,7 +53,7 @@ This HTML is a veritable train wreck, however, it seems to get the job done on 2
 
 <!-- Top Row -->
 <center>
-<h3 style="text-align: center; color: Black;">This page created: April 10, 2019, last updated: September 24, 2020, served: 
+<h3 style="text-align: center; color: Black;">This page created: May 26, 2019, last updated: September 24, 2020. 
 </center>
 <p align="center">
 <font size="6"><a href="http://www.TheLittleEngineers.org/" target="_blank">The</a> <a href="http://www.TheLittleEngineers.org/" target="_blank">Little</a> <a href="http://www.TheLittleEngineers.org/" target="_blank">Engineers</a> in conjunction with <a href="http://www.RetroATX.com" target="_blank">Retro</a><u>-</u><a href="http://www.Retro-ATX.com" target="_blank">ATX</a><br></font>
